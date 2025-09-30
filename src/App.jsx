@@ -1,7 +1,20 @@
+import { Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import Details from './pages/Details'
+import Favorites from './pages/Favorites'
+
 function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Intentionally blank page per acceptance criteria */}
+    <div className="min-h-screen bg-gray-50">
+      <NavBar />
+      <main className="py-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/drink/:id" element={<Details />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </main>
     </div>
   )
 }
