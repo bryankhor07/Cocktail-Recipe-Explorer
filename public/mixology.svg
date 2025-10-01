@@ -1,0 +1,25 @@
+<!-- Save as mixology-icon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="mixTitle mixDesc">
+  <title id="mixTitle">Mixology icon</title>
+  <desc id="mixDesc">Stylized cocktail glass with liquid and olive, logo for Mixology app</desc>
+
+  <!-- glass bowl -->
+  <path d="M10 8 L54 8 L34 32 L30 32 Z" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- liquid wave inside bowl -->
+  <path d="M14 16 C22 20, 32 18, 36 20 C40 22, 50 20, 50 20 L34 32 L30 32 Z"
+        fill="#06B6D4" opacity="0.95"/>
+
+  <!-- stem -->
+  <rect x="30" y="32" width="4" height="14" rx="1" fill="#111827"/>
+
+  <!-- base -->
+  <ellipse cx="32" cy="50" rx="12" ry="3.5" fill="#111827" opacity="0.95"/>
+
+  <!-- olive + toothpick -->
+  <line x1="45" y1="11" x2="51" y2="7" stroke="#B45309" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="51" cy="7" r="3" fill="#F59E0B" stroke="#92400E" stroke-width="0.6"/>
+
+  <!-- subtle accent 'M' mark (negative space style) -->
+  <path d="M22 38 L28 46 L32 40 L36 46 L42 38" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+</svg>
