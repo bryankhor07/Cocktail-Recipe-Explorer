@@ -12,17 +12,15 @@ const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1'
  */
 async function getJson(path) {
   try {
-    const res = await fetch(`${BASE_URL}${path}`)
-    if (!res.ok) return null
-    return await res.json()
-  } catch (err) {
-    // Network error or CORS
+    const response = await fetch(`${BASE_URL}${path}`)
+    if (!response.ok) return null
+    return await response.json()
+  } catch {
     return null
   }
 }
 
 /**
- * Search cocktails by name.
  * Wraps `/search.php?s=`
  * @param {string} name
  * @returns {Promise<Array>} Array of drinks; empty array if none or on error

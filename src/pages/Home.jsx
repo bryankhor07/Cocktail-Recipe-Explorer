@@ -121,7 +121,8 @@ export default function Home() {
               <span className="text-sm text-gray-600 dark:text-gray-300">
                 {activeIngredient ? (
                   <>
-                    Filtering by: <span className="font-semibold text-purple-700">{activeIngredient}</span>
+                    Filtering by:{' '}
+                    <span className="font-semibold text-purple-700">{activeIngredient}</span>
                   </>
                 ) : (
                   <>
@@ -160,7 +161,11 @@ export default function Home() {
           {/* Results grid */}
           {!loading && drinks.length > 0 && (
             <div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4" role="status" aria-live="polite">
+              <p
+                className="text-sm text-gray-600 dark:text-gray-400 mb-4"
+                role="status"
+                aria-live="polite"
+              >
                 Found {drinks.length} cocktail{drinks.length !== 1 ? 's' : ''}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -178,14 +183,18 @@ export default function Home() {
                 No cocktails found{' '}
                 {activeIngredient ? `with "${activeIngredient}"` : `for "${searchQuery}"`} 😢
               </p>
-              <p className="text-gray-500 dark:text-gray-500 mt-2">Try a different filter or search term</p>
+              <p className="text-gray-500 dark:text-gray-500 mt-2">
+                Try a different filter or search term
+              </p>
             </div>
           )}
 
           {/* Getting started (show when no search) */}
           {!loading && !hasSearched && (
             <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-8 rounded-xl shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Getting Started</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
+                Getting Started
+              </h2>
               <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-purple-600 dark:text-purple-400 font-bold">🔍</span>

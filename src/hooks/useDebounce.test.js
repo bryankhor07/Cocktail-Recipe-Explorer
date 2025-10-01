@@ -14,7 +14,7 @@ describe('useDebounce hook', () => {
 
   it('validates debounce behavior with timers', () => {
     vi.useFakeTimers()
-    
+
     let calls = 0
     const mockCallback = vi.fn(() => calls++)
 
@@ -49,8 +49,8 @@ describe('useDebounce hook', () => {
   it('validates the hook cancels previous timeouts', () => {
     vi.useFakeTimers()
 
-    const clearTimeoutSpy = vi.spyOn(global, 'clearTimeout')
-    const setTimeoutSpy = vi.spyOn(global, 'setTimeout')
+    const clearTimeoutSpy = vi.spyOn(globalThis, 'clearTimeout')
+    const setTimeoutSpy = vi.spyOn(globalThis, 'setTimeout')
 
     // Simulate multiple setTimeout calls (like hook re-renders)
     const timeout1 = setTimeout(() => {}, 300)

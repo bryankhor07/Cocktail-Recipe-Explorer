@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const DarkModeContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useDarkMode() {
   const context = useContext(DarkModeContext)
   if (!context) {
@@ -20,7 +21,7 @@ export function DarkModeProvider({ children }) {
       }
       // Check system preference
       return window.matchMedia('(prefers-color-scheme: dark)').matches
-    } catch (err) {
+    } catch {
       return false
     }
   })
@@ -29,8 +30,8 @@ export function DarkModeProvider({ children }) {
     // Persist to localStorage
     try {
       localStorage.setItem('darkMode', JSON.stringify(darkMode))
-    } catch (err) {
-      console.error('Failed to save dark mode preference', err)
+    } catch {
+      console.error('Failed to save dark mode preference')
     }
 
     // Update document class

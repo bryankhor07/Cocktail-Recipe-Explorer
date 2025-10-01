@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react'
 import { listIngredients } from '../lib/api'
 
-export default function IngredientSidebar({ onSelectIngredient, activeIngredient, isMobile = false, onClose }) {
+export default function IngredientSidebar({
+  onSelectIngredient,
+  activeIngredient,
+  isMobile = false,
+  onClose,
+}) {
   const [ingredients, setIngredients] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -27,7 +32,9 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
     <div className="h-full flex flex-col">
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Filter by Ingredient</h2>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+            Filter by Ingredient
+          </h2>
           {isMobile && (
             <button
               onClick={onClose}
@@ -47,7 +54,9 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
             </button>
           )}
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">Select an ingredient to filter cocktails</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          Select an ingredient to filter cocktails
+        </p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4">

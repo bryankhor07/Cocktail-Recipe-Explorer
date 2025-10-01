@@ -29,8 +29,8 @@ export default function Details() {
       await navigator.clipboard.writeText(url)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
-      console.error('Failed to copy URL', err)
+    } catch {
+      console.error('Failed to copy URL')
     }
   }
 
@@ -82,7 +82,10 @@ export default function Details() {
     return (
       <div className="container mx-auto px-4 py-8 max-w-6xl text-center">
         <p className="text-xl text-red-600 dark:text-red-400">Cocktail not found 😢</p>
-        <Link to="/" className="text-purple-600 dark:text-purple-400 hover:underline mt-4 inline-block">
+        <Link
+          to="/"
+          className="text-purple-600 dark:text-purple-400 hover:underline mt-4 inline-block"
+        >
           ← Back to Home
         </Link>
       </div>
@@ -107,7 +110,11 @@ export default function Details() {
           stroke="currentColor"
           className="w-5 h-5"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+          />
         </svg>
         <span className="font-medium">Back</span>
       </button>
@@ -127,7 +134,9 @@ export default function Details() {
           <div className="p-8 md:w-3/5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
-                <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-3">{drink.strDrink}</h1>
+                <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-3">
+                  {drink.strDrink}
+                </h1>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {drink.strCategory && (
                     <span className="px-3 py-1 text-sm font-medium bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full">
@@ -152,7 +161,11 @@ export default function Details() {
             <div className="flex flex-wrap gap-3 mb-6">
               <button
                 onClick={handleFavorite}
-                aria-label={favorited ? `Remove ${drink.strDrink} from favorites` : `Add ${drink.strDrink} to favorites`}
+                aria-label={
+                  favorited
+                    ? `Remove ${drink.strDrink} from favorites`
+                    : `Add ${drink.strDrink} to favorites`
+                }
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   favorited
                     ? 'bg-red-500 text-white hover:bg-red-600'
@@ -195,12 +208,21 @@ export default function Details() {
 
             {/* Ingredients */}
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">Ingredients</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                Ingredients
+              </h2>
               <ul className="space-y-2 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg" role="list">
                 {ingredients.map((item, idx) => (
-                  <li key={idx} className="flex justify-between items-center text-gray-700 dark:text-gray-300">
+                  <li
+                    key={idx}
+                    className="flex justify-between items-center text-gray-700 dark:text-gray-300"
+                  >
                     <span className="font-medium">{item.name}</span>
-                    {item.measure && <span className="text-gray-500 dark:text-gray-400 text-sm">{item.measure}</span>}
+                    {item.measure && (
+                      <span className="text-gray-500 dark:text-gray-400 text-sm">
+                        {item.measure}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -208,7 +230,9 @@ export default function Details() {
 
             {/* Instructions */}
             <div>
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">Instructions</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+                Instructions
+              </h2>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-lg">
                 {drink.strInstructions}
               </p>

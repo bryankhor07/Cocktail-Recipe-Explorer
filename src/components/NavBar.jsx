@@ -15,18 +15,26 @@ export default function NavBar() {
       if (drink?.idDrink) {
         navigate(`/drink/${drink.idDrink}`)
       }
-    } catch (err) {
-      console.error('Failed to fetch random cocktail', err)
+    } catch {
+      console.error('Failed to fetch random cocktail')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <nav className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-900 dark:to-pink-900 text-white shadow-lg" role="navigation" aria-label="Main navigation">
+    <nav
+      className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-900 dark:to-pink-900 text-white shadow-lg"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-6xl">
         {/* App name */}
-        <Link to="/" className="flex items-center gap-2 text-2xl font-bold hover:opacity-80 transition-opacity" aria-label="Mixology Home">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-2xl font-bold hover:opacity-80 transition-opacity"
+          aria-label="Mixology Home"
+        >
           <img src="/mixology.svg" alt="Mixology logo" className="w-8 h-8" />
           <span>Mixology</span>
         </Link>

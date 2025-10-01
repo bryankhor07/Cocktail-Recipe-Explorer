@@ -3,7 +3,7 @@ export default function CocktailCardSkeleton() {
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden animate-pulse">
       {/* Image skeleton */}
       <div className="aspect-square bg-gray-300 dark:bg-gray-700"></div>
-      
+
       {/* Content skeleton */}
       <div className="p-4">
         <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>

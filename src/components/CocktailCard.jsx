@@ -37,7 +37,11 @@ export default function CocktailCard({ drink }) {
           {/* Favorite button */}
           <button
             onClick={handleFavoriteClick}
-            aria-label={favorited ? `Remove ${drink.strDrink} from favorites` : `Add ${drink.strDrink} to favorites`}
+            aria-label={
+              favorited
+                ? `Remove ${drink.strDrink} from favorites`
+                : `Add ${drink.strDrink} to favorites`
+            }
             className="absolute top-3 right-3 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 p-2 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500 z-10"
           >
             {favorited ? (

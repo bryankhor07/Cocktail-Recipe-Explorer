@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const FavoritesContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useFavorites() {
   const context = useContext(FavoritesContext)
   if (!context) {
@@ -16,8 +17,8 @@ export function FavoritesProvider({ children }) {
     try {
       const stored = localStorage.getItem('cocktail-favorites')
       return stored ? JSON.parse(stored) : []
-    } catch (err) {
-      console.error('Failed to load favorites from localStorage', err)
+    } catch {
+      console.error('Failed to load favorites from localStorage')
       return []
     }
   })
@@ -26,8 +27,8 @@ export function FavoritesProvider({ children }) {
   useEffect(() => {
     try {
       localStorage.setItem('cocktail-favorites', JSON.stringify(favorites))
-    } catch (err) {
-      console.error('Failed to save favorites to localStorage', err)
+    } catch {
+      console.error('Failed to save favorites to localStorage')
     }
   }, [favorites])
 
@@ -51,9 +52,7 @@ export function FavoritesProvider({ children }) {
   }
 
   return (
-    <FavoritesContext.Provider
-      value={{ favorites, toggleFavorite, isFavorite, clearFavorites }}
-    >
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   )
