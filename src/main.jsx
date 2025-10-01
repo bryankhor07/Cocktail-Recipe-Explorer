@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { FavoritesProvider } from './context/FavoritesContext'
+import { DarkModeProvider } from './context/DarkModeContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <FavoritesProvider>
-        <App />
-      </FavoritesProvider>
+      <DarkModeProvider>
+        <FavoritesProvider>
+          <App />
+        </FavoritesProvider>
+      </DarkModeProvider>
     </BrowserRouter>
   </StrictMode>,
 )

@@ -6,7 +6,7 @@ import Favorites from './pages/Favorites'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <NavBar />
       <main className="py-6">
         <Routes>

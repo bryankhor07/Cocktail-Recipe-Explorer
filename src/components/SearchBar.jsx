@@ -7,7 +7,8 @@ export default function SearchBar({ value, onChange, placeholder = 'Search cockt
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-6 py-4 pl-14 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all shadow-sm"
+          aria-label="Search cocktails"
+          className="w-full px-6 py-4 pl-14 text-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all shadow-sm"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +16,8 @@ export default function SearchBar({ value, onChange, placeholder = 'Search cockt
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"

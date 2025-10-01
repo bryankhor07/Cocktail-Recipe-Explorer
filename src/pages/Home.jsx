@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import SearchBar from '../components/SearchBar'
 import CocktailCard from '../components/CocktailCard'
+import CocktailCardSkeleton from '../components/CocktailCardSkeleton'
 import IngredientSidebar from '../components/IngredientSidebar'
 import { useDebounce } from '../hooks/useDebounce'
 import { searchCocktailsByName, filterCocktailsByIngredient } from '../lib/api'
@@ -55,10 +56,10 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
+      <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
         Welcome to Cocktail Explorer 🍸
       </h1>
-      <p className="text-lg text-gray-600 mb-8 text-center">
+      <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center">
         Discover amazing cocktails, search by name or ingredient, and save your favorites!
       </p>
 
@@ -115,8 +116,8 @@ export default function Home() {
 
           {/* Breadcrumb / Active filter */}
           {(activeIngredient || searchQuery) && (
-            <div className="mb-6 flex items-center gap-3 bg-purple-50 px-4 py-3 rounded-lg">
-              <span className="text-sm text-gray-600">
+            <div className="mb-6 flex items-center gap-3 bg-purple-50 dark:bg-purple-900/20 px-4 py-3 rounded-lg">
+              <span className="text-sm text-gray-600 dark:text-gray-300">
                 {activeIngredient ? (
                   <>
                     Filtering by: <span className="font-semibold text-purple-700">{activeIngredient}</span>
@@ -148,18 +149,17 @@ export default function Home() {
 
           {/* Loading state */}
           {loading && (
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-purple-600 border-t-transparent"></div>
-              <p className="text-gray-600 mt-4">
-                {activeIngredient ? 'Filtering cocktails...' : 'Searching...'}
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <CocktailCardSkeleton key={i} />
+              ))}
             </div>
           )}
 
           {/* Results grid */}
           {!loading && drinks.length > 0 && (
             <div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4" role="status" aria-live="polite">
                 Found {drinks.length} cocktail{drinks.length !== 1 ? 's' : ''}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,34 +172,34 @@ export default function Home() {
 
           {/* No results */}
           {!loading && hasSearched && drinks.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-xl text-gray-600">
+            <div className="text-center py-12" role="status" aria-live="polite">
+              <p className="text-xl text-gray-600 dark:text-gray-400">
                 No cocktails found{' '}
                 {activeIngredient ? `with "${activeIngredient}"` : `for "${searchQuery}"`} 😢
               </p>
-              <p className="text-gray-500 mt-2">Try a different filter or search term</p>
+              <p className="text-gray-500 dark:text-gray-500 mt-2">Try a different filter or search term</p>
             </div>
           )}
 
           {/* Getting started (show when no search) */}
           {!loading && !hasSearched && (
-            <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-8 rounded-xl shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Getting Started</h2>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 p-8 rounded-xl shadow-md">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Getting Started</h2>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 font-bold">🔍</span>
+                  <span className="text-purple-600 dark:text-purple-400 font-bold">🔍</span>
                   <span>Search cocktails by name using the search bar above</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 font-bold">🍹</span>
+                  <span className="text-purple-600 dark:text-purple-400 font-bold">🍹</span>
                   <span>Filter by ingredient using the sidebar (or button on mobile)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 font-bold">🎲</span>
+                  <span className="text-purple-600 dark:text-purple-400 font-bold">🎲</span>
                   <span>Click Random in the navbar to discover a new cocktail</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-purple-600 font-bold">❤️</span>
+                  <span className="text-purple-600 dark:text-purple-400 font-bold">❤️</span>
                   <span>Save your favorite drinks for quick access</span>
                 </li>
               </ul>

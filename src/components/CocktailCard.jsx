@@ -21,24 +21,24 @@ export default function CocktailCard({ drink }) {
 
   return (
     <div
-      className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-purple-500 focus-within:ring-offset-2"
+      className="group bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus-within:ring-2 focus-within:ring-purple-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-gray-900"
       tabIndex={0}
       role="article"
       aria-label={`${drink.strDrink} cocktail card`}
       onKeyDown={handleKeyDown}
     >
       <Link to={`/drink/${drink.idDrink}`} className="block focus:outline-none">
-        <div className="relative aspect-square overflow-hidden bg-gray-100">
+        <div className="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-700">
           <img
             src={drink.strDrinkThumb}
-            alt={drink.strDrink}
+            alt={`${drink.strDrink} cocktail image`}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
           {/* Favorite button */}
           <button
             onClick={handleFavoriteClick}
-            aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
-            className="absolute top-3 right-3 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500 z-10"
+            aria-label={favorited ? `Remove ${drink.strDrink} from favorites` : `Add ${drink.strDrink} to favorites`}
+            className="absolute top-3 right-3 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 p-2 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-500 z-10"
           >
             {favorited ? (
               <svg
@@ -68,23 +68,23 @@ export default function CocktailCard({ drink }) {
           </button>
         </div>
         <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-800 group-hover:text-purple-600 transition-colors line-clamp-2 mb-2">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
             {drink.strDrink}
           </h3>
           {/* Badges */}
           <div className="flex flex-wrap gap-2">
             {drink.strCategory && (
-              <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded-full">
+              <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full">
                 {drink.strCategory}
               </span>
             )}
             {drink.strGlass && (
-              <span className="inline-block px-2 py-1 text-xs font-medium bg-pink-100 text-pink-700 rounded-full">
+              <span className="inline-block px-2 py-1 text-xs font-medium bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full">
                 {drink.strGlass}
               </span>
             )}
             {drink.strAlcoholic && (
-              <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">
+              <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full">
                 {drink.strAlcoholic}
               </span>
             )}

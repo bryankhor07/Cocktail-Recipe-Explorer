@@ -25,9 +25,9 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
 
   const content = (
     <div className="h-full flex flex-col">
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-lg font-semibold text-gray-800">Filter by Ingredient</h2>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Filter by Ingredient</h2>
           {isMobile && (
             <button
               onClick={onClose}
@@ -47,14 +47,14 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
             </button>
           )}
         </div>
-        <p className="text-sm text-gray-600">Select an ingredient to filter cocktails</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Select an ingredient to filter cocktails</p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4">
         {loading ? (
           <div className="text-center py-8">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-600 border-t-transparent"></div>
-            <p className="text-gray-600 mt-2 text-sm">Loading ingredients...</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">Loading ingredients...</p>
           </div>
         ) : (
           <div className="space-y-1">
@@ -68,8 +68,9 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
                   className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
                     isActive
                       ? 'bg-purple-600 text-white font-medium'
-                      : 'hover:bg-gray-100 text-gray-700'
+                      : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
                   }`}
+                  aria-pressed={isActive}
                 >
                   {ingredientName}
                 </button>
@@ -84,7 +85,7 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
   if (isMobile) {
     return (
       <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center">
-        <div className="bg-white w-full sm:max-w-md sm:rounded-t-xl rounded-t-xl max-h-[80vh] flex flex-col">
+        <div className="bg-white dark:bg-gray-800 w-full sm:max-w-md sm:rounded-t-xl rounded-t-xl max-h-[80vh] flex flex-col">
           {content}
         </div>
       </div>
@@ -92,7 +93,7 @@ export default function IngredientSidebar({ onSelectIngredient, activeIngredient
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md h-[600px] sticky top-6 overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md h-[600px] sticky top-6 overflow-hidden">
       {content}
     </div>
   )
