@@ -3,18 +3,21 @@
 Explore cocktails by name, ingredient, and category using the public CocktailDB API.
 
 ## Tech Stack
+
 - React (Vite)
 - Tailwind CSS v4 (via `@tailwindcss/vite`)
 - React Router v6
 - ESLint + Prettier
 
 ## Getting Started
+
 ```bash
 npm install
 npm run dev
 ```
 
 ## Scripts
+
 - `npm run dev` – start Vite dev server
 - `npm run build` – production build
 - `npm run preview` – preview production build
@@ -25,11 +28,13 @@ npm run dev
 - `npm run test:cov` – run tests with coverage
 
 ## Project Goals
+
 - Search cocktails by name and ingredient
 - Browse categories and list drinks within a category
 - View cocktail details (ingredients, measurements, instructions, thumbnail)
 
 ## API Endpoints (TheCocktailDB)
+
 Base URL: `https://www.thecocktaildb.com/api/json/v1/1/`
 
 - Search by name: `search.php?s=margarita`
@@ -48,6 +53,7 @@ See docs: https://www.thecocktaildb.com/api.php
 ### Vercel
 
 1. **Install Vercel CLI** (optional):
+
    ```bash
    npm install -g vercel
    ```
@@ -64,6 +70,7 @@ See docs: https://www.thecocktaildb.com/api.php
    - Click "Deploy"
 
 3. **Deploy via CLI**:
+
    ```bash
    vercel
    ```
@@ -77,10 +84,12 @@ See docs: https://www.thecocktaildb.com/api.php
 ### Other Platforms
 
 **Netlify**:
+
 - Build command: `npm run build`
 - Publish directory: `dist`
 
 **GitHub Pages**:
+
 - Configure base path in `vite.config.js`:
   ```js
   export default defineConfig({
@@ -104,10 +113,12 @@ See docs: https://www.thecocktaildb.com/api.php
 ## Testing
 
 Tests are written using Vitest and include:
+
 - **API wrapper tests**: Mocked fetch calls for all API functions
 - **Hook tests**: useDebounce behavior with fake timers
 
 Run tests:
+
 ```bash
 npm run test        # Watch mode
 npm run test:run    # Single run
@@ -117,12 +128,14 @@ npm run test:cov    # With coverage
 ## CI/CD
 
 GitHub Actions workflow runs on every push:
+
 - Linting with ESLint
 - Unit tests with Vitest
 - Production build verification
 - Tested on Node 18.x and 20.x
 
 ## Notes
+
 - Tailwind v4 requires only `@import "tailwindcss";` in `src/index.css` and the Tailwind Vite plugin in `vite.config.js`.
 - Dark mode uses `@variant dark (&:is(.dark *))` directive for class-based toggling.
 - Favorites and dark mode preferences are stored in localStorage.
