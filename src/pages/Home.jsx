@@ -56,8 +56,9 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
-        Welcome to Cocktail Explorer 🍸
+      <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center flex items-center justify-center gap-3">
+        <span>Welcome to Mixology</span>
+        <img src="/mixology.svg" alt="Mixology logo" className="w-12 h-12" />
       </h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center">
         Discover amazing cocktails, search by name or ingredient, and save your favorites!
