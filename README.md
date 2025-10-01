@@ -1,4 +1,4 @@
-# Cocktail Recipe Explorer
+# Mixology
 
 Explore cocktails by name, ingredient, and category using the public CocktailDB API.
 
