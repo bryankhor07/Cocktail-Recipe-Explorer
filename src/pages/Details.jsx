@@ -59,8 +59,21 @@ export default function Details() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 max-w-6xl text-center">
-        <p className="text-xl text-gray-600">Loading cocktail details...</p>
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden animate-pulse">
+          <div className="md:flex">
+            <div className="md:w-2/5 bg-gray-300 dark:bg-gray-700 min-h-[400px]"></div>
+            <div className="p-8 md:w-3/5 space-y-4">
+              <div className="h-10 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+              <div className="h-6 bg-gray-200 dark:bg-gray-600 rounded w-1/2"></div>
+              <div className="space-y-2">
+                <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>
+                <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded w-5/6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -68,8 +81,8 @@ export default function Details() {
   if (!drink) {
     return (
       <div className="container mx-auto px-4 py-8 max-w-6xl text-center">
-        <p className="text-xl text-red-600">Cocktail not found 😢</p>
-        <Link to="/" className="text-purple-600 hover:underline mt-4 inline-block">
+        <p className="text-xl text-red-600 dark:text-red-400">Cocktail not found 😢</p>
+        <Link to="/" className="text-purple-600 dark:text-purple-400 hover:underline mt-4 inline-block">
           ← Back to Home
         </Link>
       </div>
@@ -83,7 +96,8 @@ export default function Details() {
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-6 transition-colors"
+        className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 mb-6 transition-colors"
+        aria-label="Go back to previous page"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -98,13 +112,13 @@ export default function Details() {
         <span className="font-medium">Back</span>
       </button>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
         <div className="md:flex">
           {/* Image */}
-          <div className="md:w-2/5 relative">
+          <div className="md:w-2/5 relative bg-gray-100 dark:bg-gray-700">
             <img
               src={drink.strDrinkThumb}
-              alt={drink.strDrink}
+              alt={`${drink.strDrink} cocktail image`}
               className="w-full h-full object-cover min-h-[400px]"
             />
           </div>
@@ -113,20 +127,20 @@ export default function Details() {
           <div className="p-8 md:w-3/5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
-                <h1 className="text-4xl font-bold text-gray-800 mb-3">{drink.strDrink}</h1>
+                <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-3">{drink.strDrink}</h1>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {drink.strCategory && (
-                    <span className="px-3 py-1 text-sm font-medium bg-purple-100 text-purple-700 rounded-full">
+                    <span className="px-3 py-1 text-sm font-medium bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full">
                       {drink.strCategory}
                     </span>
                   )}
                   {drink.strAlcoholic && (
-                    <span className="px-3 py-1 text-sm font-medium bg-blue-100 text-blue-700 rounded-full">
+                    <span className="px-3 py-1 text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full">
                       {drink.strAlcoholic}
                     </span>
                   )}
                   {drink.strGlass && (
-                    <span className="px-3 py-1 text-sm font-medium bg-pink-100 text-pink-700 rounded-full">
+                    <span className="px-3 py-1 text-sm font-medium bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-300 rounded-full">
                       {drink.strGlass}
                     </span>
                   )}
@@ -138,10 +152,11 @@ export default function Details() {
             <div className="flex flex-wrap gap-3 mb-6">
               <button
                 onClick={handleFavorite}
+                aria-label={favorited ? `Remove ${drink.strDrink} from favorites` : `Add ${drink.strDrink} to favorites`}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   favorited
                     ? 'bg-red-500 text-white hover:bg-red-600'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 <svg
@@ -157,7 +172,8 @@ export default function Details() {
 
               <button
                 onClick={handleShare}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
+                aria-label="Share cocktail link"
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 dark:bg-purple-700 text-white rounded-lg font-medium hover:bg-purple-700 dark:hover:bg-purple-800 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -179,12 +195,12 @@ export default function Details() {
 
             {/* Ingredients */}
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Ingredients</h2>
-              <ul className="space-y-2 bg-gray-50 p-4 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">Ingredients</h2>
+              <ul className="space-y-2 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg" role="list">
                 {ingredients.map((item, idx) => (
-                  <li key={idx} className="flex justify-between items-center text-gray-700">
+                  <li key={idx} className="flex justify-between items-center text-gray-700 dark:text-gray-300">
                     <span className="font-medium">{item.name}</span>
-                    {item.measure && <span className="text-gray-500 text-sm">{item.measure}</span>}
+                    {item.measure && <span className="text-gray-500 dark:text-gray-400 text-sm">{item.measure}</span>}
                   </li>
                 ))}
               </ul>
@@ -192,8 +208,8 @@ export default function Details() {
 
             {/* Instructions */}
             <div>
-              <h2 className="text-2xl font-semibold text-gray-800 mb-3">Instructions</h2>
-              <p className="text-gray-700 leading-relaxed bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">Instructions</h2>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-4 rounded-lg">
                 {drink.strInstructions}
               </p>
             </div>
